@@ -42,10 +42,11 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-         $marcas = Marca::findorfail($id);
-
-        return view('Marca.edit',compact('marcas'));
+      $marca = Marca::findOrFail($id);
+       
+      return view('Marca.edit', compact('marca'));  
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -66,7 +67,6 @@ class MarcaController extends Controller
     {
         $marca = Marca::findorFail($id);
         $marca->delete();
-
         return redirect()->route('Marca.index');
     }
 }

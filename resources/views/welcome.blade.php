@@ -104,7 +104,7 @@
                     </div>
                     <h5 class="card-title fw-semibold">Categorías</h5>
                     <p class="text-muted small">Clasifica tus productos.</p>
-                    <a href="" class="btn btn-secondary btn-sm rounded-pill">Ver más</a>
+                    <a href=" {{ route('Categoria.index')}}" class="btn btn-secondary btn-sm rounded-pill">Ver más</a>
                 </div>
             </div>
         </div>

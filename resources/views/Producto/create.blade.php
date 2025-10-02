@@ -5,73 +5,102 @@
 @endsection
 
 @section('titleContent')
-    <h1 class="text-center my-4 fw-bold text-primary">
-        <i class="bi bi-box-seam"></i> Crear un nuevo producto
+    <h1 class="text-center fw-bold text-dark">
+        <i class="bi bi-box-seam text-success"></i> Crear Producto
     </h1>
 @endsection
 
 @section('Content')
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-8">
 
-            <div class="card shadow-sm border-0 rounded-4">
-                <div class="card-body">
+            <!-- Botón volver -->
+            <a href="{{ route('Producto.index') }}" class="btn btn-outline-secondary mb-3 rounded-pill shadow-sm">
+                <i class="bi bi-arrow-left-circle"></i> Volver
+            </a>
+
+            <!-- Card -->
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
                     <form action="{{ route('Producto.store') }}" method="POST">
                         @csrf
 
-                        <!-- Nombre del producto -->
+                        <!-- Nombre -->
                         <div class="mb-3">
-                            <label for="nombre" class="form-label fw-bold">Nombre del producto</label>
-                            <input type="text" name="nombre" id="nombre" class="form-control rounded-pill" placeholder="Ej: Laptop Dell" required>
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-tag"></i> Nombre
+                            </label>
+                            <input type="text" name="nombre" class="form-control rounded-3" placeholder="Ingrese el nombre del producto" required>
                         </div>
 
-                        <!-- Precio -->
+                        <!-- Descripción -->
                         <div class="mb-3">
-                            <label for="precio" class="form-label fw-bold">Precio</label>
-                            <input type="number" name="precio" id="precio" class="form-control rounded-pill" placeholder="Ej: 1500000" required>
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-card-text"></i> Descripción
+                            </label>
+                            <textarea name="descripcion" class="form-control rounded-3" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
                         </div>
 
-                        <!-- Stock -->
-                        <div class="mb-3">
-                            <label for="stock" class="form-label fw-bold">Stock</label>
-                            <input type="number" name="stock" id="stock" class="form-control rounded-pill" placeholder="Ej: 25" required>
+                        <!-- Precio y Fecha -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-cash-coin"></i> Precio (COP)
+                                </label>
+                                <input type="number" name="precio" class="form-control rounded-3" placeholder="Ej: 50000" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-calendar-event"></i> Fecha de Compra
+                                </label>
+                                <input type="date" name="fechaCompra" class="form-control rounded-3">
+                            </div>
                         </div>
 
-                        <!-- Categoría -->
+                        <!-- Cantidad -->
                         <div class="mb-3">
-                            <label for="categoria_id" class="form-label fw-bold">Categoría</label>
-                            <select name="categoria_id" id="categoria_id" class="form-select rounded-pill" required>
-                                <option value="" selected disabled>-- Selecciona una categoría --</option>
-                                @foreach($categorias as $categoria)
-                                    <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                                @endforeach
-                            </select>
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-box"></i> Cantidad
+                            </label>
+                            <input type="number" name="cantidad" class="form-control rounded-3" placeholder="Ej: 10" required>
                         </div>
 
-                        <!-- Marca -->
-                        <div class="mb-3">
-                            <label for="marca_id" class="form-label fw-bold">Marca</label>
-                            <select name="marca_id" id="marca_id" class="form-select rounded-pill" required>
-                                <option value="" selected disabled>-- Selecciona una marca --</option>
-                                @foreach($marcas as $marca)
-                                    <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
-                                @endforeach
-                            </select>
+                        <!-- Categoría y Marca -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-diagram-3"></i> Categoría
+                                </label>
+                                <select name="idCategorias" class="form-select rounded-3" required>
+                                    <option value="">Seleccione una categoría</option>
+                                    @foreach($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-star"></i> Marca
+                                </label>
+                                <select name="idMarcas" class="form-select rounded-3" required>
+                                    <option value="">Seleccione una marca</option>
+                                    @foreach($marcas as $marca)
+                                        <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
-                        <!-- Botones -->
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ route('Producto.index') }}" class="btn btn-outline-secondary rounded-pill">
-                                <i class="bi bi-arrow-left-circle"></i> Volver
-                            </a>
-                            <button type="submit" class="btn btn-primary rounded-pill">
-                                <i class="bi bi-save"></i> Guardar Producto
+                        <!-- Botón -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success btn-lg rounded-3 shadow-sm">
+                                <i class="bi bi-save2"></i> Guardar Producto
                             </button>
                         </div>
+
                     </form>
                 </div>
             </div>

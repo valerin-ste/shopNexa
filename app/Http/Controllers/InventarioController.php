@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventario;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 
-class InventarioController extends Controller
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $inventarios = Inventario::all();
+
+        return view('Marca.index',compact('marcas'));
     }
 
     /**
@@ -20,7 +22,7 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('Marca.create');
     }
 
     /**
@@ -28,38 +30,44 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Marca::create(
+            $request->all()
+        );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Inventario $inventario)
-    {
-        //
+        return redirect()->route('Marca.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Inventario $inventario)
+    public function edit($id)
     {
-        //
+      $marca = Marca::findOrFail($id);
+       
+      return view('Marca.edit', compact('marca'));  
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, $id)
     {
-        //
+        $marca = Marca::findorfail($id);
+        
+        $marca->update( $request->all() );
+
+        return redirect()->route('Marca.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Inventario $inventario)
+    public function destroy($id)
     {
-        //
+        $marca = Marca::findorFail($id);
+        $marca->delete();
+        return redirect()->route('Marca.index');
     }
 }
+

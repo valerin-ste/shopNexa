@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
+use App\Models\Marca;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('Producto.create');
+    $categorias = Categorias::all();
+    $marcas = Marca::all();
+
+    return view('Producto.create', compact('categorias', 'marcas'));
     }
 
     /**
@@ -42,10 +47,13 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-         $producto = Producto::findorfail($id);
+    $producto = Producto::findOrFail($id);
+    $categorias = Categorias::all();
+    $marcas = Marca::all();
 
-        return view('Producto.edit',compact('productos'));
+    return view('Producto.edit', compact('producto', 'categorias', 'marcas'));
     }
+
 
     /**
      * Update the specified resource in storage.

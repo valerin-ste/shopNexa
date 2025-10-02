@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
@@ -23,7 +24,16 @@ Route::get('/marcas/create',[MarcaController::class,'create'])->name('Marca.crea
 Route::post('/marcas/store',[MarcaController::class,'store'])->name('Marca.store');
 Route::get('/marcas/edit/{id}',[MarcaController::class,'edit'])->name('Marca.edit');
 Route::post('/marcas/update/{id}',[MarcaController::class,'update'])->name('Marca.update');
-Route::post('/marcas/destroy/{id}',[MarcaController::class,'destroy'])->name('Marca.destroy');
+Route::post('/marcas/destroy/{id}', [MarcaController::class, 'destroy'])->name('Marca.destroy');
+
+
+//Rutas Categorias
+Route::get('/categorias/index',[CategoriasController::class,'index'])->name('Categoria.index');
+Route::get('/categorias/create',[CategoriasController::class,'create'])->name('Categoria.create');
+Route::post('/categorias/store',[CategoriasController::class,'store'])->name('Categoria.store');
+Route::get('/categorias/edit/{id}',[CategoriasController::class,'edit'])->name('Categoria.edit');
+Route::post('/categorias/update/{id}',[CategoriasController::class,'update'])->name('Categoria.update');
+Route::post('/categorias/destroy/{id}',[CategoriasController::class,'destroy'])->name('Categoria.destroy');
 
 //Rutas Producto
 Route::get('/productos/index',[ProductoController::class,'index'])->name('Producto.index');

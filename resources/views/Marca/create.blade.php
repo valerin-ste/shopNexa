@@ -1,64 +1,65 @@
 @extends('layouts.app')
 
 @section('title')
-    Marcas
+    Crear Marca
 @endsection
 
 @section('titleContent')
-    <h1 class="text-center my-4 fw-light">Gestión de Marcas</h1>
+    <h1 class="text-center my-4 fw-bold">
+        <i class="bi bi-star-fill" style="color:#0dcaf0;"></i> Administrar Marcas
+    </h1>
 @endsection
 
 @section('Content')
 
-<div class="container">
-    <div class="row mb-4">
-        <div class="col text-end">
-            <a href="{{ route('Marca.create') }}" class="btn text-white" 
-               style="background-color: #1d4ed8;"> <!-- azul igual al welcome -->
-                <i class="bi bi-plus-circle"></i> Crear Marca
-            </a>
-        </div>
-    </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered text-center align-middle shadow-sm">
-                <thead class="text-white" style="background-color: #1e40af;"> <!-- azul más oscuro -->
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($marcas as $marca)
-                        <tr>
-                            <td>{{ $marca->id }}</td>
-                            <td>{{ $marca->nombre }}</td>
-                            <td>{{ $marca->descripcion }}</td>
-                            <td>
-                                <a href="{{ route('Marca.edit', $marca->id) }}" 
-                                   class="btn btn-sm text-white" style="background-color: #2563eb;">
-                                    <i class="bi bi-pencil-square"></i> Editar
-                                </a>
-                                <form action="{{ route('Marca.destroy', $marca->id) }}" method="POST" 
-                                      style="display:inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" 
-                                            class="btn btn-sm text-white" style="background-color: #dc2626;"
-                                            onclick="return confirm('¿Seguro que deseas eliminar esta marca?')">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="mb-3 text-start">
+                <a href="{{ route('Marca.index') }}" class="btn btn-outline-secondary rounded-pill shadow-sm">
+                    <i class="bi bi-arrow-left-circle"></i> Volver
+                </a>
+            </div>
+
+            
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
+                    <form action="{{ route('Marca.store') }}" method="POST">
+                        @csrf
+
+                        
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label fw-semibold">
+                                <i class="bi bi-pencil-fill"></i> Nombre
+                            </label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre">
+                        </div>
+
+                       
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label fw-semibold">
+                                <i class="bi bi-card-text"></i> Descripción
+                            </label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" rows="3" placeholder="Ingrese una descripción"></textarea>
+                        </div>
+
+                       
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn text-white rounded-pill px-4 shadow"
+                                    style="background-color: #0dcaf0;">
+                                <i class="bi bi-check-circle-fill"></i> Guardar Marca
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-
 @endsection

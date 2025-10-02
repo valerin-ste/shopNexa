@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categorias = Categorias::all();
+
+        return view('Categoria.index',compact('categorias'));
     }
 
     /**
@@ -20,7 +23,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('Categoria.create');
     }
 
     /**
@@ -28,38 +31,43 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Categorias::create(
+            $request->all()
+        );
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Categorias $categorias)
-    {
-        //
+        return redirect()->route('Categoria.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Categorias $categorias)
+    public function edit($id)
     {
-        //
+         $categorias = Categorias::findorfail($id);
+
+        return view('Categoria.edit',compact('categorias'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, $id)
     {
-        //
+        $categorias = Categorias::findorfail($id);
+        
+        $categorias->update( $request->all() );
+
+        return redirect()->route('Categoria.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorias $categorias)
+    public function destroy($id)
     {
-        //
+        $categorias = Categorias::findorFail($id);
+        $categorias->delete();
+
+        return redirect()->route('Categoria.index');
     }
 }
