@@ -4,6 +4,9 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\FacturaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,3 +46,27 @@ Route::get('/productos/edit/{id}',[ProductoController::class,'edit'])->name('Pro
 Route::post('/productos/update/{id}',[ProductoController::class,'update'])->name('Producto.update');
 Route::post('/productos/destroy/{id}',[ProductoController::class,'destroy'])->name('Producto.destroy');
 
+//Rutas Inventario
+Route::get('/inventario/index',[InventarioController::class,'index'])->name('Inventario.index');
+Route::get('/inventario/create',[InventarioController::class,'create'])->name('Inventario.create');
+Route::post('/inventario/store',[InventarioController::class,'store'])->name('Inventario.store');
+Route::get('/inventario/edit/{id}',[InventarioController::class,'edit'])->name('Inventario.edit');
+Route::post('/inventario/update/{id}',[InventarioController::class,'update'])->name('Inventario.update');
+Route::post('/inventario/destroy/{id}',[InventarioController::class,'destroy'])->name('Inventario.destroy');
+
+//Rutas Proveedor
+Route::get('/proveedor/index',[ProveedorController::class,'index'])->name('Proveedores.index');
+Route::get('/proveedor/create',[ProveedorController::class,'create'])->name('Proveedores.create');
+Route::post('/proveedor/store',[ProveedorController::class,'store'])->name('Proveedores.store');
+Route::get('/proveedor/edit/{id}',[ProveedorController::class,'edit'])->name('Proveedores.edit');
+Route::post('/proveedor/update/{id}',[ProveedorController::class,'update'])->name('Proveedores.update');
+Route::post('/proveedor/destroy/{id}',[ProveedorController::class,'destroy'])->name('Proveedores.destroy');
+
+//Rutas Facturas
+
+Route::get('/factura/index',[FacturaController::class,'index'])->name('Factura.index');
+Route::get('/factura/create',[FacturaController::class,'create'])->name('Factura.create');
+Route::post('/factura/store',[FacturaController::class,'store'])->name('Factura.store');
+Route::get('/factura/edit/{id}',[FacturaController::class,'edit'])->name('Factura.edit');
+Route::post('/factura/update/{id}',[FacturaController::class,'update'])->name('Factura.update');
+Route::post('/factura/destroy/{id}',[FacturaController::class,'destroy'])->name('Factura.destroy');

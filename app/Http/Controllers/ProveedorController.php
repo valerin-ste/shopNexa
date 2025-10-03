@@ -12,7 +12,9 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+         $proveedor = Proveedor::all();
+
+         return view('Proveedores.index',compact('proveedor'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('Proveedores.create');
     }
 
     /**
@@ -28,38 +30,45 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Proveedor::create(
+            $request->all()
+        );
+
+        return redirect()->route('Proveedores.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Proveedor $proveedor)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proveedor $proveedor)
+    public function edit( $id)
     {
-        //
+         $proveedor = Proveedor::findorfail($id);
+
+        return view('Proveedores.edit',compact('proveedor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request,$id)
     {
-        //
+        $proveedor = Proveedor::findorfail($id);
+        
+        $proveedor->update( $request->all() );
+
+        return redirect()->route('Proveedores.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Proveedor $proveedor)
+    public function destroy($id)
     {
-        //
+        $proveedor = Proveedor::findorFail($id);
+        $proveedor->delete();
+
+        return redirect()->route('Proveedores.index');
     }
 }

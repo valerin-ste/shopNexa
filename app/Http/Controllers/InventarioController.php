@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Marca;
+
+use App\Models\Inventario;
 use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class MarcaController extends Controller
     {
         $inventarios = Inventario::all();
 
-        return view('Marca.index',compact('marcas'));
+        return view('Inventario.index',compact('inventarios'));
     }
 
     /**
@@ -22,7 +23,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        return view('Marca.create');
+        return view('Inventario.create', compact('productos'));
     }
 
     /**
@@ -30,11 +31,11 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        Marca::create(
+        Inventario::create(
             $request->all()
         );
 
-        return redirect()->route('Marca.index');
+        return redirect()->route('Inventario.index');
     }
 
     /**
@@ -42,9 +43,9 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-      $marca = Marca::findOrFail($id);
+      $inventarios = Inventario::findOrFail($id);
        
-      return view('Marca.edit', compact('marca'));  
+      return view('Inventario.edit', compact('productos'));  
     }
 
 
@@ -53,11 +54,11 @@ class MarcaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marca = Marca::findorfail($id);
+        $inventarios = Inventario::findorfail($id);
         
-        $marca->update( $request->all() );
+        $inventarios->update( $request->all() );
 
-        return redirect()->route('Marca.index');
+        return redirect()->route('Inventario.index');
     }
 
     /**
@@ -65,9 +66,9 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        $marca = Marca::findorFail($id);
-        $marca->delete();
-        return redirect()->route('Marca.index');
+        $inventarios = Inventario::findorFail($id);
+        $inventarios->delete();
+        return redirect()->route('Inventario.index');
     }
 }
 

@@ -10,7 +10,9 @@ class Factura extends Model
 
     protected $fillable= [
         'fechaEmision',
-        'montoTotal'
+        'montoTotal',
+        'idUsuarios'
+
     ];
 
     public function usuario()

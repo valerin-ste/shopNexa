@@ -62,7 +62,7 @@
                     </div>
                     <h5 class="card-title fw-semibold">Inventario</h5>
                     <p class="text-muted small">Controla existencias y movimientos.</p>
-                    <a href="" class="btn btn-danger btn-sm rounded-pill">Ver más</a>
+                    <a href="{{ route ('Inventario.index') }}" class="btn btn-danger btn-sm rounded-pill">Ver más</a>
                 </div>
             </div>
         </div>
@@ -76,25 +76,27 @@
                     </div>
                     <h5 class="card-title fw-semibold">Proveedores</h5>
                     <p class="text-muted small">Administra tus proveedores.</p>
-                    <a href="" class="btn btn-warning btn-sm rounded-pill">Ver más</a>
+                    <a href="{{ route ('Proveedores.index') }}" class="btn btn-warning btn-sm rounded-pill">Ver más</a>
                 </div>
             </div>
         </div>
 
-        <!-- Facturas -->
-        <div class="col-md-3 col-sm-6">
-            <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
-                <div class="card-body p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-receipt fs-1 text-dark"></i>
-                    </div>
-                    <h5 class="card-title fw-semibold">Facturas</h5>
-                    <p class="text-muted small">Consulta y gestiona ventas.</p>
-                    <a href="" class="btn btn-dark btn-sm rounded-pill">Ver más</a>
-                </div>
-            </div>
-        </div>
 
+        <!-- Factura -->
+<div class="col-md-3 col-sm-6">
+    <div class="card shadow-sm border-0 rounded-4 h-100 text-center">
+        <div class="card-body p-4">
+            <div class="mb-3">
+                <i class="bi bi-receipt fs-1 text-dark"></i>
+            </div>
+            <h5 class="card-title fw-semibold">Factura</h5>
+            <p class="text-muted small">Consulta y gestiona ventas.</p>
+            <a href="{{ route('Factura.index') }}" class="btn btn-dark btn-sm rounded-pill">Ver más</a>
+        </div>
+    </div>
+</div>
+
+    
         <!-- Categorías -->
         <div class="col-md-3 col-sm-6">
             <div class="card shadow-sm border-0 rounded-4 h-100 text-center">

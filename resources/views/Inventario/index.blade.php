@@ -41,8 +41,8 @@
                                 </a>
                                 <form action="{{ route('Inventario.destroy', $inventario->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este inventario?')">
-                                        <i class="bi bi-trash3-fill"></i>
+                                    <button class="btn btn-danger btn-sm rounded-pill">
+                                        <i class="bi bi-trash-fill"></i> Eliminar
                                     </button>
                                 </form>
                             </td>
