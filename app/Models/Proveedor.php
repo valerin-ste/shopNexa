@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
-    protected $table = "usuarios";
+    protected $table = "Proveedores";
 
-    protected $fillable= [
-        'nombre',
-        'direccion',
-        'telefono',
-        'correoElectronico'
-    ];
+    protected $fillable = [
+    'nombre',
+    'direccion',
+    'telefono',
+    'correoElectronico'
+];
 
        public function productos_proveedores()
     {

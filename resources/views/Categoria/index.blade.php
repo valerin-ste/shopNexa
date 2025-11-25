@@ -5,71 +5,166 @@
 @endsection
 
 @section('titleContent')
-    <h1 class="text-center my-4 fw-bold">
-        <i class="bi bi-tags-fill" style="color: #6b7280;"></i> Administrar Categorías
-    </h1>
+    <div class="text-center my-4">
+        <h1 class="fw-bold text-dark p-3 rounded-3" style="background-color: #e7f8ec;">
+            <i class="bi bi-tags-fill text-success"></i> Categorías de Productos
+        </h1>
+    </div>
 @endsection
 
 @section('Content')
-<!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <div class="container">
-    <div class="row">
 
-        <!-- Botón crear -->
-        <div class="mb-3">
-            <a href="{{ route('Categoria.create')}}" class="btn text-white rounded-pill shadow-sm"
-               style="background-color: #6b7280;">
-                <i class="bi bi-plus-circle"></i> Crear nueva categoría
-            </a>
+    {{-- ================= MENSAJES ================= --}}
+
+    @if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: "{{ session('success') }}",
+                confirmButtonText: 'Aceptar',
+                timer: 3000
+            });
+        });
+    </script>
+    @endif
+
+    @if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Atención!',
+                text: "{{ session('error') }}",
+                confirmButtonText: 'Aceptar',
+            });
+        });
+    </script>
+    @endif
+
+    {{-- ============================================ --}}
+
+    <!-- Botón crear -->
+    <div class="mb-4 text-end">
+        <a href="{{ route('Categoria.create') }}" 
+           class="btn text-white rounded-pill shadow-sm px-4"
+           style="background-color: #198754;">
+            <i class="bi bi-plus-circle"></i> Crear categoría
+        </a>
+    </div>
+
+    <!-- Cards de categorías -->
+    <div class="row g-4">
+        @foreach ($categorias as $categoria)
+        <div class="col-lg-3 col-md-4 col-sm-6">
+
+            <div class="card shadow-lg border-0 rounded-4 h-100 text-center p-3">
+
+                <!-- Imagen -->
+                <img 
+                    src="{{ asset('storage/'.$categoria->imagen) }}" 
+                    class="rounded-circle mx-auto mb-3"
+                    style="width: 120px; height:120px; object-fit: cover;"
+                    alt="Imagen categoría">
+
+                <!-- Nombre -->
+                <h5 class="fw-bold text-dark">{{ $categoria->nombre }}</h5>
+
+                <!-- Descripción breve -->
+                <p class="text-muted" style="font-size: 14px; height:50px; overflow:hidden;">
+                    {{ $categoria->descripcion }}
+                </p>
+
+                <!-- Botón Ver más -->
+                <button 
+                    class="btn btn-success rounded-pill px-4 mt-auto" 
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalCategoria{{ $categoria->id }}">
+                    Ver más
+                </button>
+
+            </div>
+
         </div>
 
-        <!-- Tabla de categorías -->
-        <div class="card shadow-sm border-0 rounded-4">
-            <div class="card-body">
-                <table class="table table-hover align-middle">
-                    <thead style="background-color: #9ca3af; color: white;">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th class="text-center">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($categorias as $categoria)
-                        <tr>
-                            <td>{{ $categoria->id }}</td>
-                            <td>{{ $categoria->nombre }}</td>
-                            <td>{{ $categoria->descripcion }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('Categoria.edit',$categoria->id) }}" 
-                                   class="btn btn-sm text-white rounded-pill" style="background-color: #6b7280;">
-                                    <i class="bi bi-pencil-square"></i> Editar
-                                </a>
+        <!-- ============================
+             MODAL DE INFORMACIÓN
+        ================================= -->
+        <div class="modal fade" id="modalCategoria{{ $categoria->id }}" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content rounded-4">
 
-                                <form action="{{ route('Categoria.destroy', $categoria->id) }}" method="POST" style="display:inline-block;">
-                                    @csrf
-                                    <button class="btn btn-danger btn-sm rounded-pill">
-                                        <i class="bi bi-trash-fill"></i> Eliminar
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    <div class="modal-header" style="background:#e7f8ec;">
+                        <h5 class="modal-title fw-bold">
+                            <i class="bi bi-basket text-success"></i>
+                            Productos de {{ $categoria->nombre }}
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        @if($categoria->productos->count() > 0)
+
+                            <ul class="list-group">
+                                @foreach ($categoria->productos as $producto)
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>{{ $producto->nombre }}</span>
+                                        <span class="fw-bold text-success">${{ number_format($producto->precio,0) }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+
+                        @else
+                            <div class="text-center text-muted py-3">
+                                <i class="bi bi-info-circle"></i>  
+                                No hay productos registrados en esta categoría.
+                            </div>
+                        @endif
+
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-between">
+
+                        <!-- Botón eliminar con confirmación -->
+                        <form action="{{ route('Categoria.destroy', $categoria->id) }}" method="POST"
+                              onsubmit="return confirm('¿Estás seguro de eliminar esta categoría? Esta acción no se puede deshacer.')" >
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger rounded-pill px-4">
+                                <i class="bi bi-trash-fill"></i> Eliminar
+                            </button>
+                        </form>
+
+                        <!-- Botón cerrar -->
+                        <button class="btn btn-outline-success rounded-pill px-4" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+
+                    </div>
+
+                </div>
             </div>
         </div>
+        <!-- ============================ -->
 
-        <!-- Botón volver -->
-        <div class="mt-3"> 
-            <a href="{{ route('welcome') }}" class="btn btn-outline-secondary rounded-pill">
-                <i class="bi bi-arrow-left-circle"></i> Volver
-            </a>
-        </div>
-
+        @endforeach
     </div>
+
+    {{-- Botón Volver --}}
+    <div class="mt-4 d-flex justify-content-start">
+        <a href="{{ route('welcome') }}" class="btn btn-outline-success rounded-pill px-4">
+            <i class="bi bi-arrow-left-circle"></i> Volver
+        </a>
+    </div>
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 @endsection

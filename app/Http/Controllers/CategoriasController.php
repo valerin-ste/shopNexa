@@ -3,71 +3,79 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoriaRequest;
 
 class CategoriasController extends Controller
 {
-   
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categorias = Categorias::all();
-
-        return view('Categoria.index',compact('categorias'));
+        return view('Categoria.index', compact('categorias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('Categoria.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(CategoriaRequest $request)
     {
-        Categorias::create(
-            $request->all()
-        );
+        $categoria = new Categorias();
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
 
-        return redirect()->route('Categoria.index');
+        if ($request->hasFile("imagen")) {
+            $archivo = $request->file("imagen");
+            $nombreImagen = time() . "_" . $archivo->getClientOriginalName();
+            $archivo->move(public_path("categorias"), $nombreImagen);
+            $categoria->imagen = $nombreImagen;
+        }
+
+        $categoria->save();
+
+        return redirect()->route('Categoria.index')->with('success', 'Categoría creada correctamente.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
-         $categorias = Categorias::findorfail($id);
-
-        return view('Categoria.edit',compact('categorias'));
+        $categorias = Categorias::findOrFail($id);
+        return view('Categoria.edit', compact('categorias'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+    public function update(CategoriaRequest $request, $id)
     {
-        $categorias = Categorias::findorfail($id);
-        
-        $categorias->update( $request->all() );
+        $categoria = Categorias::findOrFail($id);
 
-        return redirect()->route('Categoria.index');
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+
+        if ($request->hasFile("imagen")) {
+
+            if ($categoria->imagen && file_exists(public_path("categorias/" . $categoria->imagen))) {
+                unlink(public_path("categorias/" . $categoria->imagen));
+            }
+
+            $archivo = $request->file("imagen");
+            $nombreImagen = time() . "_" . $archivo->getClientOriginalName();
+            $archivo->move(public_path("categorias"), $nombreImagen);
+            $categoria->imagen = $nombreImagen;
+        }
+
+        $categoria->save();
+
+        return redirect()->route('Categoria.index')->with('success', 'Categoría actualizada correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
-        $categorias = Categorias::findorFail($id);
-        $categorias->delete();
+        $categoria = Categorias::findOrFail($id);
 
-        return redirect()->route('Categoria.index');
+        if ($categoria->imagen && file_exists(public_path("categorias/" . $categoria->imagen))) {
+            unlink(public_path("categorias/" . $categoria->imagen));
+        }
+
+        $categoria->delete();
+
+        return redirect()->route('Categoria.index')->with('success', 'Categoría eliminada correctamente.');
     }
 }

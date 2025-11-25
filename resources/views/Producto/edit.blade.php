@@ -1,84 +1,97 @@
 @extends('layouts.app')
 
-@section('title')
-    Editar Producto
-@endsection
+@section('title') Editar Producto @endsection
 
 @section('titleContent')
-    <h1 class="text-center my-4 fw-bold">
+<div class="text-center my-4">
+    <h1 class="fw-bold text-dark p-3 rounded-3" style="background-color: #e7f8ec;">
         <i class="bi bi-pencil-square text-success"></i> Editar Producto
     </h1>
+</div>
 @endsection
 
 @section('Content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-sm border-0 rounded-4">
-                <div class="card-body">
+
+            <div class="mb-3 text-start">
+                <a href="{{ route('Producto.index') }}" class="btn btn-outline-success rounded-pill shadow-sm">
+                    <i class="bi bi-arrow-left-circle"></i> Volver
+                </a>
+            </div>
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
                     <form action="{{ route('Producto.update', $producto->id) }}" method="POST">
                         @csrf
-                       
+                        @method('PUT')
 
                         <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" value="{{ $producto->nombre }}" >
+                            <label class="form-label fw-semibold text-success">Nombre del Producto</label>
+                            <input type="text" name="nombre" class="form-control" value="{{ $producto->nombre }}">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <textarea name="descripcion" class="form-control" rows="3">{{ $producto->descripcion }}</textarea>
+                            <label class="form-label fw-semibold text-success">Descripción</label>
+                            <textarea name="descripcion" class="form-control">{{ $producto->descripcion }}</textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Precio</label>
-                            <input type="number" step="0.01" name="precio" class="form-control" value="{{ $producto->precio }}" >
+                            <label class="form-label fw-semibold text-success">Precio</label>
+                            <input type="number" step="0.01" name="precio" class="form-control" value="{{ $producto->precio }}">
                         </div>
 
                         <div class="mb-3">
-                        <label for="fechaCompra" class="form-label">Fecha de Compra</label>
-                        <input type="date" class="form-control" id="fechaCompra" name="fechaCompra" value="{{ $producto->fechaCompra}}" >
-                           
-                    </div>
+                            <label class="form-label fw-semibold text-success">Fecha de Compra</label>
+                            <input type="date" name="fechaCompra" class="form-control" value="{{ $producto->fechaCompra }}">
+                        </div>
+
                         <div class="mb-3">
-                            <label class="form-label">Cantidad</label>
+                            <label class="form-label fw-semibold text-success">Cantidad</label>
                             <input type="number" name="cantidad" class="form-control" value="{{ $producto->cantidad }}">
                         </div>
 
+                        <!-- Categoría -->
                         <div class="mb-3">
-                            <label class="form-label">Categoría</label>
-                            <select name="categoria_id" class="form-select" >
-                                @foreach($categorias as $categoria)
-                                    <option value="{{ $categoria->id }}" {{ $producto->categoria_id == $categoria->id ? 'selected' : '' }}>
-                                        {{ $categoria->nombre }}
+                            <label class="form-label fw-semibold text-success">Categoría</label>
+                            <select name="idCategorias" class="form-control">
+                                @foreach($categorias as $cat)
+                                    <option value="{{ $cat->id }}" {{ $producto->idCategorias == $cat->id ? 'selected' : '' }}>
+                                        {{ $cat->nombre }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
+                        <!-- Marca -->
                         <div class="mb-3">
-                            <label class="form-label">Marca</label>
-                            <select name="marca_id" class="form-select" >
-                                @foreach($marcas as $marca)
-                                    <option value="{{ $marca->id }}" {{ $producto->marca_id == $marca->id ? 'selected' : '' }}>
-                                        {{ $marca->nombre }}
+                            <label class="form-label fw-semibold text-success">Marca</label>
+                            <select name="idMarcas" class="form-control">
+                                @foreach($marcas as $mar)
+                                    <option value="{{ $mar->id }}" {{ $producto->idMarcas == $mar->id ? 'selected' : '' }}>
+                                        {{ $mar->nombre }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success rounded-pill px-4">
-                                <i class="bi bi-check-circle"></i> Actualizar
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn text-white rounded-pill px-4 shadow" style="background-color: #198754;">
+                                <i class="bi bi-arrow-repeat"></i> Actualizar Producto
                             </button>
-                            <a href="{{ route('Producto.index') }}" class="btn btn-outline-secondary rounded-pill px-4">
-                                <i class="bi bi-arrow-left-circle"></i> Cancelar
-                            </a>
                         </div>
+
                     </form>
+
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
 @endsection

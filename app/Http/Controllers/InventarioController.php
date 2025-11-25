@@ -2,73 +2,55 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Inventario;
+use App\Models\Producto; 
 use Illuminate\Http\Request;
+use App\Http\Requests\InventarioRequest;
 
 class InventarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
-    {
+    {            
         $inventarios = Inventario::all();
-
-        return view('Inventario.index',compact('inventarios'));
+        return view('Inventario.index', compact('inventarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
+        $productos = Producto::all();
         return view('Inventario.create', compact('productos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(InventarioRequest $request)
     {
-        Inventario::create(
-            $request->all()
-        );
-
-        return redirect()->route('Inventario.index');
+        Inventario::create($request->validated());
+        return redirect()->route('Inventario.index')
+            ->with('success', 'Inventario creado correctamente.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
-      $inventarios = Inventario::findOrFail($id);
-       
-      return view('Inventario.edit', compact('productos'));  
+        $inventarios = Inventario::findOrFail($id);
+        $productos = Producto::all();
+        return view('Inventario.edit', compact('inventarios', 'productos'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+    public function update(InventarioRequest $request, $id)
     {
-        $inventarios = Inventario::findorfail($id);
-        
-        $inventarios->update( $request->all() );
+        $inventarios = Inventario::findOrFail($id);
+        $inventarios->update($request->validated());
 
-        return redirect()->route('Inventario.index');
+        return redirect()->route('Inventario.index')
+            ->with('success', 'Inventario actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // 🔥 DELETE SIN MÉTODO DELETE — SOLO GET
     public function destroy($id)
     {
-        $inventarios = Inventario::findorFail($id);
+        $inventarios = Inventario::findOrFail($id);
         $inventarios->delete();
-        return redirect()->route('Inventario.index');
+
+        return redirect()->route('Inventario.index')
+            ->with('success', 'Inventario eliminado correctamente.');
     }
 }
-

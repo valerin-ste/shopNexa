@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\UsuarioRequest;
 use App\Models\Usuarios;
-use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
@@ -13,8 +13,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuarios::all();
-
-        return view('Usuario.index',compact('usuarios'));
+        return view('Usuario.index', compact('usuarios'));
     }
 
     /**
@@ -28,37 +27,29 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        Usuarios::create(
-            $request->all()
-        );
-
-        return redirect()->route('Usuario.index');
+        Usuarios::create($request->validated());
+        return redirect()->route('Usuario.index')->with('success', 'Usuario creado correctamente.');
     }
-
-   
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
     {
-         $usuario = Usuarios::findorfail($id);
-
-        return view('Usuario.edit',compact('usuario'));
+        $usuario = Usuarios::findOrFail($id);
+        return view('Usuario.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(UsuarioRequest $request, $id)
     {
-        $usuario = Usuarios::findorfail($id);
-        
-        $usuario->update( $request->all() );
-
-        return redirect()->route('Usuario.index');
+        $usuario = Usuarios::findOrFail($id);
+        $usuario->update($request->validated());
+        return redirect()->route('Usuario.index')->with('success', 'Usuario actualizado correctamente.');
     }
 
     /**
@@ -66,10 +57,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = Usuarios::findorFail($id);
+        $usuario = Usuarios::findOrFail($id);
         $usuario->delete();
-
-        return redirect()->route('Usuario.index');
+        return redirect()->route('Usuario.index')->with('success', 'Usuario eliminado correctamente.');
     }
-
 }

@@ -6,8 +6,8 @@
 
 @section('titleContent')
     <div class="text-center my-4">
-        <h1 class="fw-bold text-dark p-3 rounded-3" style="background-color: #cfe2ff;">
-            <i class="bi bi-person-plus-fill"></i> Crear Usuario
+        <h1 class="fw-bold text-dark p-3 rounded-3" style="background-color: #e7f8ec;">
+            <i class="bi bi-person-plus-fill text-success"></i> Crear Usuario
         </h1>
     </div>
 @endsection
@@ -22,7 +22,7 @@
 
             <!-- Botón volver -->
             <div class="mb-3 text-start">
-                <a href="{{ route('Usuario.index') }}" class="btn btn-outline-secondary rounded-pill shadow-sm">
+                <a href="{{ route('Usuario.index') }}" class="btn btn-outline-success rounded-pill shadow-sm">
                     <i class="bi bi-arrow-left-circle"></i> Volver
                 </a>
             </div>
@@ -36,40 +36,52 @@
 
                         <!-- Nombre -->
                         <div class="mb-3">
-                            <label for="nombre" class="form-label fw-semibold">
+                            <label for="nombre" class="form-label fw-semibold text-success">
                                 <i class="bi bi-person-fill"></i> Nombre
                             </label>
-                            <input type="text" id="nombre" name="nombre" class="form-control" >
+                            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}">
+                            @error('nombre')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Dirección -->
                         <div class="mb-3">
-                            <label for="direccion" class="form-label fw-semibold">
+                            <label for="direccion" class="form-label fw-semibold text-success">
                                 <i class="bi bi-geo-alt-fill"></i> Dirección
                             </label>
-                            <input type="text" id="direccion" name="direccion" class="form-control" >
+                            <input type="text" id="direccion" name="direccion" class="form-control" value="{{ old('direccion') }}">
+                            @error('direccion')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Teléfono -->
                         <div class="mb-3">
-                            <label for="telefono" class="form-label fw-semibold">
+                            <label for="telefono" class="form-label fw-semibold text-success">
                                 <i class="bi bi-telephone-fill"></i> Teléfono
                             </label>
-                            <input type="text" id="telefono" name="telefono" class="form-control" >
+                            <input type="text" id="telefono" name="telefono" class="form-control" value="{{ old('telefono') }}">
+                            @error('telefono')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Correo Electrónico -->
                         <div class="mb-3">
-                            <label for="correoElectronico" class="form-label fw-semibold">
+                            <label for="correoElectronico" class="form-label fw-semibold text-success">
                                 <i class="bi bi-envelope-fill"></i> Correo Electrónico
                             </label>
-                            <input type="email" id="correoElectronico" name="correoElectronico" class="form-control" >
+                            <input type="email" id="correoElectronico" name="correoElectronico" class="form-control" value="{{ old('correoElectronico') }}">
+                            @error('correoElectronico')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <!-- Botón guardar -->
                         <div class="text-center mt-4">
                             <button type="submit" class="btn text-white rounded-pill px-4 shadow"
-                                    style="background-color: #2563eb;">
+                                    style="background-color: #198754;">
                                 <i class="bi bi-check-circle-fill"></i> Guardar Usuario
                             </button>
                         </div>
