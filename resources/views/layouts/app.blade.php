@@ -129,6 +129,10 @@
            style="background: #28a745; color: #fff; border-radius: 30px; padding: 8px 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
             <i class="bi bi-arrow-left-circle"></i> Volver
         </a>
+        <a href="{{ route('logout') }}" class="btn" 
+           style="background: #28a745; color: #fff; border-radius: 30px; padding: 8px 18px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+            <i class="bi bi-arrow-left-circle"></i> Cerrar sesión
+        </a>
     </div>
 </nav>
 

@@ -79,7 +79,7 @@
     <div class="welcome-container">
         <h1>¡Bienvenido a Shop Nexa!</h1>
         <p>Tu plataforma de gestión de supermercado. Administra productos, usuarios y ventas fácilmente.</p>
-        <a href="{{ route('welcome') }}"class="btn rounded-pill px-4 py-2 mt-3">Entrar al sistema</a>
+        <a href="{{ route('login') }}"class="btn rounded-pill px-4 py-2 mt-3">Entrar al sistema</a>
     </div>
 </body>
 </html>

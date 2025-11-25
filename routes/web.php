@@ -7,15 +7,38 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\usersController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+//RUTA PRINCIPAL
+Route::get('/login', function () {
+    return redirect()->route('login');
+});
+
+// Página inicial (landing con el logo de FitBoost)
 Route::get('/', function () {
     return view('landing');
-}); 
+});
 
-Route::get('welcome', function () {
+
+Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
+
+
+//rutas para login
+Route::get('/login',[usersController::class,'verlogin'])->name('login');
+Route::post('/loginsubmit',[usersController::class,'login'])->name('login.submit');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('login');
+})->name('logout');
+
+//RUTAS REGISTRO
+Route::get('/registro', [usersController::class, 'verRegistro'])->name('registro');
+Route::post('/registro-submit', [usersController::class, 'registro'])->name('registro.submit');
 
 // ==========================
 // Rutas Usuarios
