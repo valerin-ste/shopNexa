@@ -2,21 +2,29 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Factura extends Model
 {
-    protected $table = "facturas";
+    use HasFactory;
 
-    protected $fillable= [
+    protected $table = 'facturas';
+
+    protected $fillable = [
+        'numeroFactura',
         'fechaEmision',
+        'idUsuarios',
+        'direccionCliente',
+        'metodoPago',
+        'estadoPago',
         'montoTotal',
-        'idUsuarios'
-
+        'notas',
     ];
 
+    // RELACIÓN CORRECTA
     public function usuario()
     {
-        return $this->belongsTo(Usuarios::class, 'idUsuarios');
+        return $this->belongsTo(Usuarios::class, 'idUsuarios', 'id');
     }
 }

@@ -52,14 +52,15 @@
                             @error('descripcion')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
+                       <div class="text-center mt-4">
+    <button type="submit" class="btn text-white fw-bold rounded-pill px-4 shadow"
+            style="background-color: #198754;">
+        <i class="bi bi-arrow-repeat"></i> Actualizar Marca
+    </button>
+</div>
 
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn text-dark rounded-pill px-4 shadow"
-                                    style="background-color: #ffc107;">
-                                <i class="bi bi-arrow-repeat"></i> Actualizar Marca
-                            </button>
-                        </div>
+
+
 
                     </form>
                 </div>

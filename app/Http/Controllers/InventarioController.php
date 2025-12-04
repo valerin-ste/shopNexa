@@ -6,12 +6,28 @@ use App\Models\Inventario;
 use App\Models\Producto; 
 use Illuminate\Http\Request;
 use App\Http\Requests\InventarioRequest;
+use Barryvdh\DomPDF\Facade\Pdf; 
 
 class InventarioController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {            
-        $inventarios = Inventario::all();
+        $query = Inventario::with('productos');
+
+        // FILTRO POR NOMBRE DE PRODUCTO
+        if ($request->filled('producto')) {
+            $query->whereHas('productos', function ($q) use ($request) {
+                $q->where('nombre', 'LIKE', '%' . $request->producto . '%');
+            });
+        }
+
+        // FILTRO POR CANTIDAD
+        if ($request->filled('cantidad')) {
+            $query->where('cantidad', $request->cantidad);
+        }
+
+        $inventarios = $query->get();
+
         return view('Inventario.index', compact('inventarios'));
     }
 
@@ -44,7 +60,6 @@ class InventarioController extends Controller
             ->with('success', 'Inventario actualizado correctamente.');
     }
 
-    // 🔥 DELETE SIN MÉTODO DELETE — SOLO GET
     public function destroy($id)
     {
         $inventarios = Inventario::findOrFail($id);
@@ -52,5 +67,19 @@ class InventarioController extends Controller
 
         return redirect()->route('Inventario.index')
             ->with('success', 'Inventario eliminado correctamente.');
+    }
+
+    public function pdfView()
+    {
+        $inventarios = Inventario::with('productos')->get();
+        $pdf = Pdf::loadView('Inventario.pdf', compact('inventarios'));
+        return $pdf->stream('Inventario.pdf');
+    }
+
+    public function pdfDownload()
+    {
+        $inventarios = Inventario::with('productos')->get();
+        $pdf = Pdf::loadView('Inventario.pdf', compact('inventarios'));
+        return $pdf->download('Inventario.pdf');
     }
 }

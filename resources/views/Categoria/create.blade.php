@@ -21,34 +21,19 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body">
 
-                    <form action="{{ route('Categoria.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Categoria.store') }}" method="POST">
                         @csrf
 
                         <!-- Nombre -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">Nombre</label>
                             <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}">
-                            @error('nombre')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
 
                         <!-- Descripción -->
                         <div class="mb-3">
                             <label class="form-label fw-bold">Descripción</label>
                             <textarea name="descripcion" class="form-control" rows="3">{{ old('descripcion') }}</textarea>
-                            @error('descripcion')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <!-- Imagen -->
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Imagen</label>
-                            <input type="file" name="imagen" class="form-control">
-                            @error('imagen')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
 
                         <div class="text-center">

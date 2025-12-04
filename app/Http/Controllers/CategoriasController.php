@@ -4,13 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorias;
 use App\Http\Requests\CategoriaRequest;
+use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = Categorias::all();
-        return view('Categoria.index', compact('categorias'));
+        $buscar = $request->input('buscar');
+
+        // Cargar categorías + productos (necesario para los modales)
+        $categorias = Categorias::with('productos')
+            ->when($buscar, function ($query, $buscar) {
+                return $query->where('nombre', 'LIKE', "%$buscar%");
+            })
+            ->get();
+
+        return view('Categoria.index', compact('categorias', 'buscar'));
     }
 
     public function create()

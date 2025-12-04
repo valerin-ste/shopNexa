@@ -9,8 +9,15 @@ class MarcaController extends Controller
 {
     public function index()
     {
-        $marcas = Marca::all();
-        return view('Marca.index', compact('marcas'));
+        // FILTRO
+        $buscar = request()->input('buscar');
+
+        $marcas = Marca::when($buscar, function ($query) use ($buscar) {
+            $query->where('nombre', 'LIKE', "%$buscar%")
+                  ->orWhere('descripcion', 'LIKE', "%$buscar%");
+        })->get();
+
+        return view('Marca.index', compact('marcas', 'buscar'));
     }
 
     public function create()

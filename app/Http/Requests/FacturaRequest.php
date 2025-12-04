@@ -14,21 +14,29 @@ class FacturaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fechaEmision' => 'required|date',
-            'montoTotal' => 'required|numeric',
-            'idUsuarios' => 'required|exists:usuarios,id',
+            'numeroFactura'     => 'required|string|max:50',
+            'fechaEmision'      => 'required|date',
+            'idUsuarios'        => 'required|exists:usuarios,id',
+            'direccionCliente'  => 'required|string|max:255',
+            'metodoPago'        => 'required|string',
+            'estadoPago'        => 'required|string',
+            'montoTotal'        => 'required|numeric',
+            'notas'             => 'nullable|string',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'fechaEmision.required' => 'La fecha de emisión es obligatoria.',
-            'fechaEmision.date' => 'Debe ser una fecha válida.',
-            'montoTotal.required' => 'El monto total es obligatorio.',
-            'montoTotal.numeric' => 'El monto debe ser un número.',
-            'idUsuarios.required' => 'Debe seleccionar un usuario.',
-            'idUsuarios.exists' => 'El usuario seleccionado no existe.',
+            'numeroFactura.required'     => 'El número de factura es obligatorio.',
+            'fechaEmision.required'      => 'La fecha de emisión es obligatoria.',
+            'idUsuarios.required'        => 'Debe seleccionar un usuario.',
+            'idUsuarios.exists'          => 'El usuario seleccionado no es válido.',
+            'direccionCliente.required'  => 'La dirección del cliente es obligatoria.',
+            'metodoPago.required'        => 'Debe seleccionar un método de pago.',
+            'estadoPago.required'        => 'Debe seleccionar un estado de pago.',
+            'montoTotal.required'        => 'Debe ingresar el monto total.',
+            'montoTotal.numeric'         => 'El monto total debe ser un número.',
         ];
     }
 }

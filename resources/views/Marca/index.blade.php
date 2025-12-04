@@ -23,7 +23,7 @@
             title: "¡Éxito!",
             text: "{{ session('success') }}",
             confirmButtonText: "Aceptar",
-            confirmButtonColor: "#28a745" // verde
+            confirmButtonColor: "#28a745"
         });
     });
 </script>
@@ -40,6 +40,21 @@
             </a>
         </div>
 
+    <div class="mb-3 d-flex justify-content-start">
+    <form action="{{ route('Marca.index') }}" method="GET" class="d-flex gap-2" style="width: 350px;">
+        <input type="text" 
+               name="buscar" 
+               class="form-control rounded-pill"
+               placeholder="Buscar marca..."
+               value="{{ $buscar ?? '' }}">
+
+        <button class="btn btn-outline-success rounded-pill">
+            <i class="bi bi-search"></i>
+        </button>
+    </form>
+</div>
+
+
         <!-- Tabla -->
         <div class="card shadow-sm border-0 rounded-4">
             <div class="card-body">
@@ -48,6 +63,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Descripcion</th>
                             <th class="text-center">Opciones</th>
                         </tr>
                     </thead>
@@ -56,19 +72,20 @@
                         <tr>
                             <td>{{ $marca->id }}</td>
                             <td>{{ $marca->nombre }}</td>
+                            <td>{{ $marca->descripcion }}</td>
                             <td class="text-center">
 
-                                <!-- Editar (AMARILLO) -->
+                                <!-- Editar -->
                                 <a href="{{ route('Marca.edit',$marca->id) }}" 
                                    class="btn btn-warning btn-sm rounded-pill text-dark">
                                     <i class="bi bi-pencil-square"></i> Editar
                                 </a>
 
-                                <!-- Eliminar (ROJO) -->
+                                <!-- Eliminar -->
                                 <form action="{{ route('Marca.destroy', $marca->id) }}" 
                                       method="POST" style="display:inline-block;">
                                     @csrf
-                                    @method('DELETE')
+                                   
 
                                     <button class="btn btn-danger btn-sm rounded-pill">
                                         <i class="bi bi-trash-fill"></i> Eliminar

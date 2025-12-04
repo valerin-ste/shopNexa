@@ -28,7 +28,6 @@
 
                     <form action="{{ route('Producto.update', $producto->id) }}" method="POST">
                         @csrf
-                        @method('PUT')
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold text-success">Nombre del Producto</label>

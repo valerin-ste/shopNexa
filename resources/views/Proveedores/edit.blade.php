@@ -42,8 +42,9 @@
             @enderror
         </div>
 
-        <!-- BOTÓN AMARILLO -->
-        <button class="btn btn-warning text-dark fw-bold">Actualizar</button>
+        
+        <button class="btn btn-success text-white fw-bold">Actualizar</button>
+
 
         <a href="{{ route('Proveedores.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>

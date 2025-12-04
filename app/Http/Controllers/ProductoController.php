@@ -7,22 +7,36 @@ use App\Models\Producto;
 use App\Models\Categorias;
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductoController extends Controller
 {
     /**
-     * Mostrar la lista de productos.
+     * Mostrar la lista de productos con filtros.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Trae todos los productos con sus relaciones categoria y marca
-        $productos = Producto::with(['categorias', 'marcas'])->get();
-        return view('Producto.index', compact('productos'));
+        $productos = Producto::with(['categorias', 'marcas'])
+            ->when($request->nombre, function($q) use ($request) {
+                $q->where('nombre', 'LIKE', "%{$request->nombre}%");
+            })
+            ->when($request->descripcion, function($q) use ($request) {
+                $q->where('descripcion', 'LIKE', "%{$request->descripcion}%");
+            })
+            ->when($request->categoria_id, function($q) use ($request) {
+                $q->where('categoria_id', $request->categoria_id);
+            })
+            ->when($request->marca_id, function($q) use ($request) {
+                $q->where('marca_id', $request->marca_id);
+            })
+            ->get();
+
+        $categorias = Categorias::all();
+        $marcas = Marca::all();
+
+        return view('Producto.index', compact('productos', 'categorias', 'marcas'));
     }
 
-    /**
-     * Mostrar el formulario para crear un nuevo producto.
-     */
     public function create()
     {
         $categorias = Categorias::all();
@@ -30,9 +44,6 @@ class ProductoController extends Controller
         return view('Producto.create', compact('categorias', 'marcas'));
     }
 
-    /**
-     * Guardar un nuevo producto en la base de datos.
-     */
     public function store(ProductoRequest $request)
     {
         Producto::create($request->validated());
@@ -42,9 +53,6 @@ class ProductoController extends Controller
             ->with('success', 'Producto creado correctamente.');
     }
 
-    /**
-     * Mostrar formulario de edición.
-     */
     public function edit($id)
     {
         $producto = Producto::findOrFail($id);
@@ -54,9 +62,6 @@ class ProductoController extends Controller
         return view('Producto.edit', compact('producto','categorias','marcas'));
     }
 
-    /**
-     * Actualizar producto.
-     */
     public function update(ProductoRequest $request, $id)
     {
         $producto = Producto::findOrFail($id);
@@ -67,9 +72,6 @@ class ProductoController extends Controller
             ->with('success', 'Producto actualizado correctamente.');
     }
 
-    /**
-     * Eliminar producto.
-     */
     public function destroy($id)
     {
         $producto = Producto::findOrFail($id);
@@ -84,5 +86,19 @@ class ProductoController extends Controller
                 ->route('Producto.index')
                 ->with('error', 'No se puede eliminar este producto porque tiene registros asociados.');
         }
+    }
+
+    public function pdf()
+    {
+        $productos = Producto::with(['categorias', 'marcas'])->get();
+        $pdf = Pdf::loadView('Producto.pdf', compact('productos'));
+        return $pdf->stream('ListadoProductos.pdf');
+    }
+
+    public function pdfDownload()
+    {
+        $productos = Producto::with(['categorias', 'marcas'])->get();
+        $pdf = Pdf::loadView('Producto.pdf', compact('productos'));
+        return $pdf->download('ListadoProductos.pdf');
     }
 }

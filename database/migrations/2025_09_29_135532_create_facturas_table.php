@@ -6,25 +6,30 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
-            $table->date('fechaEmision');
-            $table->decimal('montoTotal', 10,2);
 
-            $table->unsignedBigInteger('idUsuarios');
-            $table->foreign('idUsuarios')->references('id')->on('usuarios');
+            $table->string('numeroFactura')->unique();
+            $table->date('fechaEmision');
+
+           
+           $table->unsignedBigInteger('idUsuarios');
+           $table->foreign('idUsuarios')->references('id')->on('usuarios')->onDelete('cascade');
+
+
+            $table->string('direccionCliente');
+            $table->string('metodoPago');    
+            $table->string('estadoPago');     
+
+            $table->decimal('montoTotal', 12, 2);
+            $table->text('notas')->nullable();
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('facturas');

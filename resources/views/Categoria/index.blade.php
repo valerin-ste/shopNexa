@@ -64,18 +64,13 @@
 
             <div class="card shadow-lg border-0 rounded-4 h-100 text-center p-3">
 
-                <!-- Imagen -->
-                <img 
-                    src="{{ asset('storage/'.$categoria->imagen) }}" 
-                    class="rounded-circle mx-auto mb-3"
-                    style="width: 120px; height:120px; object-fit: cover;"
-                    alt="Imagen categoría">
+                <!-- (IMAGEN ELIMINADA) -->
 
                 <!-- Nombre -->
-                <h5 class="fw-bold text-dark">{{ $categoria->nombre }}</h5>
+                <h5 class="fw-bold text-dark mt-2">{{ $categoria->nombre }}</h5>
 
-                <!-- Descripción breve -->
-                <p class="text-muted" style="font-size: 14px; height:50px; overflow:hidden;">
+                <!-- Descripción -->
+                <p class="text-muted" style="font-size: 14px;">
                     {{ $categoria->descripcion }}
                 </p>
 
@@ -134,7 +129,6 @@
                         <form action="{{ route('Categoria.destroy', $categoria->id) }}" method="POST"
                               onsubmit="return confirm('¿Estás seguro de eliminar esta categoría? Esta acción no se puede deshacer.')" >
                             @csrf
-                            @method('DELETE')
 
                             <button class="btn btn-danger rounded-pill px-4">
                                 <i class="bi bi-trash-fill"></i> Eliminar
