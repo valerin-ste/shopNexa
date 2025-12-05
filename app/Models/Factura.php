@@ -15,7 +15,6 @@ class Factura extends Model
         'numeroFactura',
         'fechaEmision',
         'idUsuarios',
-        'direccionCliente',
         'metodoPago',
         'estadoPago',
         'montoTotal',

@@ -85,9 +85,9 @@
                 <thead class="table-success">
                     <tr>
                         <th>ID</th>
-                        <th>Cantidad</th>
-                        <th>Fecha Actualización</th>
                         <th>Producto</th>
+                        <th>Fecha Actualización</th>
+                        <th>Cantidad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -96,9 +96,9 @@
                     @foreach ($inventarios as $inventario)
                     <tr>
                         <td>{{ $inventario->id }}</td>
-                        <td>{{ $inventario->cantidad }}</td>
-                        <td>{{ \Carbon\Carbon::parse($inventario->fechaActualizacion)->format('d/m/Y') }}</td>
                         <td>{{ $inventario->productos->nombre }}</td>
+                        <td>{{ \Carbon\Carbon::parse($inventario->fechaActualizacion)->format('d/m/Y') }}</td>
+                        <td>{{ $inventario->cantidad }}</td>
 
                         <td>
                             <a href="{{ route('Inventario.edit', $inventario->id) }}" 

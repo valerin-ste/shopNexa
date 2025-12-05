@@ -21,9 +21,9 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Cantidad</th>
-            <th>Fecha Actualización</th>
             <th>Producto</th>
+            <th>Fecha Actualización</th>
+            <th>Cantidad</th>
         </tr>
     </thead>
 
@@ -31,9 +31,9 @@
         @foreach ($inventarios as $inv)
         <tr>
             <td>{{ $inv->id }}</td>
-            <td>{{ $inv->cantidad }}</td>
-            <td>{{ \Carbon\Carbon::parse($inv->fechaActualizacion)->format('d/m/Y') }}</td>
             <td>{{ $inv->productos->nombre ?? 'Sin producto' }}</td>
+            <td>{{ \Carbon\Carbon::parse($inv->fechaActualizacion)->format('d/m/Y') }}</td>
+            <td>{{ $inv->cantidad }}</td>
         </tr>
         @endforeach
     </tbody>

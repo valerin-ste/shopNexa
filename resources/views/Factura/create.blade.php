@@ -56,12 +56,6 @@
                         @error('idUsuarios') <small class="text-danger">{{ $message }}</small> @enderror
                     </div>
 
-                    {{-- Dirección --}}
-                    <div class="col-12 mb-3">
-                        <label class="form-label fw-bold">Dirección del Cliente:</label>
-                        <input type="text" name="direccionCliente" class="form-control rounded-pill">
-                        @error('direccionCliente') <small class="text-danger">{{ $message }}</small> @enderror
-                    </div>
 
                     {{-- Método de Pago --}}
                     <div class="col-12 mb-3">

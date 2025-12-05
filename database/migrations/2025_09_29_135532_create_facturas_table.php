@@ -19,7 +19,6 @@ return new class extends Migration
            $table->foreign('idUsuarios')->references('id')->on('usuarios')->onDelete('cascade');
 
 
-            $table->string('direccionCliente');
             $table->string('metodoPago');    
             $table->string('estadoPago');     
 

@@ -15,8 +15,8 @@ class ProductosSeeder extends Seeder
             'descripcion' => 'Arroz blanco Casanare en presentación de 500 gramos, ideal para porciones pequeñas.',
             'precio' => 2800,
             'cantidad' => 50,
-            'fechaCompra' => 14/03/2025,
-            'cantidad'=>20,
+            'fechaCompra' => Carbon::now(),
+            'cantidad'=> 20,
             'idCategorias' => 1,   // Granos y Harinas
             'idMarcas' => 36      // Marca Casanare
         ]);
@@ -38,6 +38,7 @@ class ProductosSeeder extends Seeder
             'precio' => 11000,
             'cantidad' => 30,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 36
         ]);
@@ -48,6 +49,7 @@ class ProductosSeeder extends Seeder
             'precio' => 13500,
             'cantidad' => 25,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 36
         ]);
@@ -61,6 +63,7 @@ class ProductosSeeder extends Seeder
             'precio' => 1500,
             'cantidad' => 60,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>18,
             'idCategorias' => 1,
             'idMarcas' => 37
         ]);
@@ -71,6 +74,7 @@ class ProductosSeeder extends Seeder
             'precio' => 6500,
             'cantidad' => 40,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>18,
             'idCategorias' => 1,
             'idMarcas' => 37
         ]);
@@ -81,6 +85,7 @@ class ProductosSeeder extends Seeder
             'precio' => 1500,
             'cantidad' => 50,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>18,
             'idCategorias' => 1,
             'idMarcas' => 37
         ]);
@@ -91,6 +96,7 @@ class ProductosSeeder extends Seeder
             'precio' => 1200,
             'cantidad' => 70,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>18,
             'idCategorias' => 1,
             'idMarcas' => 37
         ]);
@@ -101,6 +107,7 @@ class ProductosSeeder extends Seeder
             'precio' => 1300,
             'cantidad' => 65,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>18,
             'idCategorias' => 1,
             'idMarcas' => 37
         ]);
@@ -114,6 +121,7 @@ class ProductosSeeder extends Seeder
             'precio' => 1800,
             'cantidad' => 55,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 38
         ]);
@@ -124,6 +132,7 @@ class ProductosSeeder extends Seeder
             'precio' => 2600,
             'cantidad' => 45,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 38
         ]);
@@ -134,6 +143,7 @@ class ProductosSeeder extends Seeder
             'precio' => 2400,
             'cantidad' => 50,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 38
         ]);
@@ -144,6 +154,7 @@ class ProductosSeeder extends Seeder
             'precio' => 2500,
             'cantidad' => 50,
             'fechaCompra' => Carbon::now(),
+            'cantidad'=>20,
             'idCategorias' => 1,
             'idMarcas' => 38
         ]);
@@ -157,6 +168,7 @@ Producto::create([
     'precio' => 3800,
     'cantidad' => 40,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 1
 ]);
@@ -167,6 +179,7 @@ Producto::create([
     'precio' => 3200,
     'cantidad' => 50,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 1
 ]);
@@ -177,6 +190,7 @@ Producto::create([
     'precio' => 3500,
     'cantidad' => 45,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 1
 ]);
@@ -190,6 +204,7 @@ Producto::create([
     'precio' => 3000,
     'cantidad' => 55,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 2
 ]);
@@ -203,6 +218,7 @@ Producto::create([
     'precio' => 4200,
     'cantidad' => 30,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 4
 ]);
@@ -213,6 +229,7 @@ Producto::create([
     'precio' => 2500,
     'cantidad' => 45,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 4
 ]);
@@ -223,6 +240,7 @@ Producto::create([
     'precio' => 3900,
     'cantidad' => 35,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 4
 ]);
@@ -236,6 +254,7 @@ Producto::create([
     'precio' => 2100,
     'cantidad' => 40,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 5
 ]);
@@ -250,6 +269,7 @@ Producto::create([
     'precio' => 4800,
     'cantidad' => 25,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 6
 ]);
@@ -260,6 +280,7 @@ Producto::create([
     'precio' => 4700,
     'cantidad' => 30,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 6
 ]);
@@ -270,6 +291,7 @@ Producto::create([
     'precio' => 2600,
     'cantidad' => 40,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 2,
     'idMarcas' => 6
 ]);
@@ -286,6 +308,7 @@ Producto::create([
     'precio' => 5200,
     'cantidad' => 40,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 7
 ]);
@@ -297,6 +320,7 @@ Producto::create([
     'precio' => 5000,
     'cantidad' => 35,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 8
 ]);
@@ -308,6 +332,7 @@ Producto::create([
     'precio' => 4300,
     'cantidad' => 28,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 9
 ]);
@@ -319,6 +344,7 @@ Producto::create([
     'precio' => 4500,
     'cantidad' => 30,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 9
 ]);
@@ -330,6 +356,7 @@ Producto::create([
     'precio' => 4700,
     'cantidad' => 22,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 9
 ]);
@@ -341,6 +368,7 @@ Producto::create([
     'precio' => 2800,
     'cantidad' => 20,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 3
 ]);
@@ -352,6 +380,7 @@ Producto::create([
     'precio' => 2700,
     'cantidad' => 18,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 1,
     'idMarcas' => 3
 ]);
@@ -367,6 +396,7 @@ Producto::create([
     'precio' => 9800,
     'cantidad' => 15,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 3,
     'idMarcas' => 10
 ]);
@@ -378,6 +408,7 @@ Producto::create([
     'precio' => 4500,
     'cantidad' => 25,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 3,
     'idMarcas' => 11
 ]);
@@ -389,6 +420,7 @@ Producto::create([
     'precio' => 7800,
     'cantidad' => 20,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 3,
     'idMarcas' => 11
 ]);
@@ -400,6 +432,7 @@ Producto::create([
     'precio' => 8200,
     'cantidad' => 18,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 3,
     'idMarcas' => 12 // Asignada a Andi Aliñado
 ]);
@@ -415,6 +448,7 @@ Producto::create([
     'precio' => 8500,
     'cantidad' => 20,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 13
 ]);
@@ -426,6 +460,7 @@ Producto::create([
     'precio' => 7800,
     'cantidad' => 18,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 14
 ]);
@@ -437,6 +472,7 @@ Producto::create([
     'precio' => 7600,
     'cantidad' => 15,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 15
 ]);
@@ -448,6 +484,7 @@ Producto::create([
     'precio' => 9200,
     'cantidad' => 16,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 16
 ]);
@@ -459,6 +496,7 @@ Producto::create([
     'precio' => 6800,
     'cantidad' => 22,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 17
 ]);
@@ -470,6 +508,7 @@ Producto::create([
     'precio' => 7500,
     'cantidad' => 14,
     'fechaCompra' => Carbon::now(),
+    'cantidad'=>20,
     'idCategorias' => 4,
     'idMarcas' => 18
 ]);
@@ -480,9 +519,9 @@ Producto::create([
             'descripcion' => 'Avena Don Pacho en hojuelas en presentación de 180 g, ideal para bebidas y preparaciones nutritivas.',
             'precio' => 2500,
             'cantidad' => 30,
-            'fechaCompra' => '2025-01-15',
-            'categoria_id' => 6,   // Avena / Cereales (cambia si usas otro ID)
-            'marca_id' => 22     // Cambia al ID correcto de la marca Don Pacho
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 6,   // Avena / Cereales (cambia si usas otro ID)
+            'idMarcas' => 22     // Cambia al ID correcto de la marca Don Pacho
         ]);
 
         Producto::create([
@@ -490,9 +529,9 @@ Producto::create([
             'descripcion' => 'Avena Del Sur en hojuelas en presentación familiar de 500 g, rica en fibra y perfecta para el desayuno.',
             'precio' => 5200,
             'cantidad' => 25,
-            'fechaCompra' => '2025-01-15',
-            'categoria_id' => 6,
-            'marca_id' => 23       // Cambia al ID de Del Sur
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 6,
+            'idMarcas' => 23       // Cambia al ID de Del Sur
         ]);
 
         Producto::create([
@@ -500,9 +539,9 @@ Producto::create([
             'descripcion' => 'Avena Del Sur en hojuelas en presentación de 250 g, ideal para recetas rápidas y saludables.',
             'precio' => 3200,
             'cantidad' => 20,
-            'fechaCompra' => '2025-01-15',
-            'categoria_id' => 6,
-            'marca_id' => 23
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 6,
+            'idMarcas' => 23
         ]);
 
         Producto::create([
@@ -510,9 +549,9 @@ Producto::create([
             'descripcion' => 'Cuchuco de maíz blanco Molinos Julián en presentación de 500 g, ideal para sopas tradicionales.',
             'precio' => 3800,
             'cantidad' => 40,
-            'fechaCompra' => '2025-01-20',
-            'categoria_id' => 1,   // Granos y harinas (ajusta si usas otro ID)
-            'marca_id' => 3      // ID ficticio de Molinos Julián (cámbialo si es otro)
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 1,   // Granos y harinas (ajusta si usas otro ID)
+            'idMarcas' => 3      // ID ficticio de Molinos Julián (cámbialo si es otro)
         ]);
 
         Producto::create([
@@ -520,9 +559,9 @@ Producto::create([
             'descripcion' => 'Cuchuco de cebada perlada Molinos Julián en presentación de 500 g, perfecto para sopas espesas y nutritivas.',
             'precio' => 4200,
             'cantidad' => 35,
-            'fechaCompra' => '2025-01-20',
-            'categoria_id' => 1,
-            'marca_id' => 3
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 1,
+            'idMarcas' => 3
         ]);
 
         Producto::create([
@@ -530,9 +569,9 @@ Producto::create([
             'descripcion' => 'Cuchuco de cebada Molinos Julián en empaque de 500 g, tradicional para recetas caseras.',
             'precio' => 4000,
             'cantidad' => 33,
-            'fechaCompra' => '2025-01-20',
-            'categoria_id' => 1,
-            'marca_id' => 3
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 1,
+            'idMarcas' => 3
         ]);
 
         // SELLO ROJO
@@ -541,9 +580,9 @@ Producto::create([
             'descripcion' => 'Café Sello Rojo tradicional en presentación de 425 g, sabor intenso y aroma clásico.',
             'precio' => 14500,
             'cantidad' => 30,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 19
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 19
         ]);
 
         Producto::create([
@@ -551,9 +590,9 @@ Producto::create([
             'descripcion' => 'Café Sello Rojo tradicional en presentación de 212 g, ideal para consumo diario.',
             'precio' => 8200,
             'cantidad' => 42,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 19
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 19
         ]);
 
         Producto::create([
@@ -561,9 +600,9 @@ Producto::create([
             'descripcion' => 'Café Sello Rojo tradicional de 110 g, práctico y rendidor.',
             'precio' => 4500,
             'cantidad' => 55,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 19
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 19
         ]);
 
         Producto::create([
@@ -571,9 +610,9 @@ Producto::create([
             'descripcion' => 'Café Sello Rojo tradicional de 40 g, ideal para viajes o uso rápido.',
             'precio' => 1800,
             'cantidad' => 70,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 19
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 19
         ]);
 
         // COLCAFE
@@ -582,9 +621,9 @@ Producto::create([
             'descripcion' => 'Café Colcafé suave clásico en sobre de 8 g, práctico y delicioso.',
             'precio' => 600,
             'cantidad' => 100,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 20
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 20
         ]);
 
         Producto::create([
@@ -592,9 +631,9 @@ Producto::create([
             'descripcion' => 'Café Colcafé granulado intenso instantáneo 170 g, sabor fuerte y aroma profundo.',
             'precio' => 16500,
             'cantidad' => 28,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 20
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 20
         ]);
 
         Producto::create([
@@ -602,9 +641,9 @@ Producto::create([
             'descripcion' => 'Café Colcafé granulado intenso instantáneo 85 g, ideal para preparar rápidamente.',
             'precio' => 9500,
             'cantidad' => 40,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 20
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 20
         ]);
 
         // NESCAFÉ
@@ -613,9 +652,9 @@ Producto::create([
             'descripcion' => 'Café Nescafé tradicional en sobre de 10 g, práctico y de sabor clásico.',
             'precio' => 700,
             'cantidad' => 90,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 5,
-            'marca_id' => 21
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 5,
+            'idMarcas' => 21
         ]);
 
          // ❖ Jabones Dersa
@@ -624,9 +663,9 @@ Producto::create([
             'descripcion' => 'Jabón en barra Dersa Rey de 300 g, ideal para lavado general y multiusos.',
             'precio' => 2500,
             'cantidad' => 80,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 24
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 24
         ]);
 
         Producto::create([
@@ -634,9 +673,9 @@ Producto::create([
             'descripcion' => 'Jabón en barra Dersa Azul Puro de 320 g, efectivo para ropa y limpieza.',
             'precio' => 2600,
             'cantidad' => 75,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 25
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 25
         ]);
 
         // ❖ Barrigón
@@ -645,9 +684,9 @@ Producto::create([
             'descripcion' => 'Jabón barrigón de 400 g, reconocido por su alto rendimiento en el lavado.',
             'precio' => 3200,
             'cantidad' => 60,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 26
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 26
         ]);
 
         // ❖ Supremo
@@ -656,9 +695,9 @@ Producto::create([
             'descripcion' => 'Jabón supremo multiusos de 300 g, perfecto para limpieza general.',
             'precio' => 2400,
             'cantidad' => 65,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 27
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 27
         ]);
 
         // ❖ Fab
@@ -667,9 +706,9 @@ Producto::create([
             'descripcion' => 'Jabón Fab Ultra Flash aroma limón, 300 g, ideal para eliminar manchas.',
             'precio' => 2900,
             'cantidad' => 70,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 28
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 28
         ]);
 
         Producto::create([
@@ -677,9 +716,9 @@ Producto::create([
             'descripcion' => 'Jabón Fab Ultra Flash floral de 300 g, eficiente y con aroma agradable.',
             'precio' => 2900,
             'cantidad' => 70,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 28
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 28
         ]);
 
         // ❖ Puro
@@ -688,9 +727,9 @@ Producto::create([
             'descripcion' => 'Jabón Puro con bicarbonato de 360 g, ideal para eliminar olores y limpieza profunda.',
             'precio' => 3000,
             'cantidad' => 50,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 29
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 29
         ]);
 
         // ❖ Jabones corporales
@@ -699,9 +738,9 @@ Producto::create([
             'descripcion' => 'Jabón Rexona antibacterial de 110 g, protección y frescura para la piel.',
             'precio' => 3500,
             'cantidad' => 90,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 8,
-            'marca_id' => 30
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 8,
+            'idMarcas' => 30
         ]);
 
         Producto::create([
@@ -709,9 +748,9 @@ Producto::create([
             'descripcion' => 'Jabón Protex Nutri Protector 110 g, protección antibacterial avanzada.',
             'precio' => 3800,
             'cantidad' => 85,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 8,
-            'marca_id' => 31
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 8,
+            'idMarcas' => 31
         ]);
 
         Producto::create([
@@ -719,9 +758,9 @@ Producto::create([
             'descripcion' => 'Jabón Protex limpieza profunda de 110 g, elimina impurezas y protege la piel.',
             'precio' => 3800,
             'cantidad' => 85,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 8,
-            'marca_id' => 31
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 8,
+            'idMarcas' => 31
         ]);
 
         // ❖ Jabones en polvo 3D
@@ -730,9 +769,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo 3D multiusos aloe vera, presentación de 1000 g.',
             'precio' => 9500,
             'cantidad' => 40,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 32
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 32
         ]);
 
         Producto::create([
@@ -740,9 +779,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo 3D aloe vera de 500 g, limpieza efectiva.',
             'precio' => 5200,
             'cantidad' => 50,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 32
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 32
         ]);
 
         Producto::create([
@@ -750,9 +789,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo multiusos aloe vera de 250 g, ideal para usos rápidos.',
             'precio' => 3000,
             'cantidad' => 60,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 32
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 32
         ]);
 
         Producto::create([
@@ -760,9 +799,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo 3D aloe vera en presentación de 125 g.',
             'precio' => 1800,
             'cantidad' => 75,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 32
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 32
         ]);
 
         // ❖ Dersa polvo
@@ -771,9 +810,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Dersa bicarbonato aroma manzana, presentación de 1000 g.',
             'precio' => 9200,
             'cantidad' => 45,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 25
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 25
         ]);
 
         Producto::create([
@@ -781,9 +820,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Dersa bicarbonato aroma manzana 500 g.',
             'precio' => 4800,
             'cantidad' => 55,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 25
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 25
         ]);
 
         Producto::create([
@@ -791,9 +830,9 @@ Producto::create([
             'descripcion' => 'Jabón Dersa con bicarbonato y Jabón Rey en presentación de 250 g.',
             'precio' => 3200,
             'cantidad' => 65,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 25
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 25
         ]);
 
         Producto::create([
@@ -801,9 +840,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Dersa vinagre limón 1000 g, limpieza profunda.',
             'precio' => 9500,
             'cantidad' => 42,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 25
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 25
         ]);
 
         // ❖ DeterK
@@ -812,9 +851,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo DeterK floral de 100 g, ideal para pequeñas cargas de lavado.',
             'precio' => 1200,
             'cantidad' => 90,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 33
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 33
         ]);
 
         // ❖ Ariel
@@ -823,9 +862,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Ariel triple poder 1000 g, limpieza avanzada contra manchas.',
             'precio' => 13800,
             'cantidad' => 40,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 34
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 34
         ]);
 
         Producto::create([
@@ -833,9 +872,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Ariel triple poder 450 g, ideal para uso diario.',
             'precio' => 7200,
             'cantidad' => 55,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 34
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 34
         ]);
 
         Producto::create([
@@ -843,9 +882,9 @@ Producto::create([
             'descripcion' => 'Jabón en polvo Ariel triple poder 225 g, rendimiento garantizado.',
             'precio' => 4100,
             'cantidad' => 70,
-            'fechaCompra' => '2025-01-22',
-            'categoria_id' => 7,
-            'marca_id' => 34
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 7,
+            'idMarcas' => 34
         ]);
 
          // Aceite Ideal 1000ml
@@ -854,9 +893,9 @@ Producto::create([
             'descripcion' => 'Aceite Ideal de 1000 ml, perfecto para frituras y preparaciones diarias.',
             'precio' => 9800,
             'cantidad' => 60,
-            'fechaCompra' => '2025-01-24',
-            'categoria_id' => 9,
-            'marca_id' => 35
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 9,
+            'idMarcas' => 35
         ]);
 
         // Aceite Ideal garrafa 3000ml
@@ -865,9 +904,9 @@ Producto::create([
             'descripcion' => 'Aceite Ideal en garrafa de 3000 ml, ideal para familias y negocios.',
             'precio' => 26500,
             'cantidad' => 40,
-            'fechaCompra' => '2025-01-24',
-            'categoria_id' => 9,
-            'marca_id' => 35
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 9,
+            'idMarcas' => 35
         ]);
 
         // Aceite Ideal garrafa 4800ml
@@ -876,9 +915,9 @@ Producto::create([
             'descripcion' => 'Aceite Ideal en presentación económica de 4800 ml, alto rendimiento.',
             'precio' => 39800,
             'cantidad' => 35,
-            'fechaCompra' => '2025-01-24',
-            'categoria_id' => 9,
-            'marca_id' => 35
+            'fechaCompra' => Carbon::now(),
+            'idCategorias' => 9,
+            'idMarcas' => 35
         ]);
     }
 }

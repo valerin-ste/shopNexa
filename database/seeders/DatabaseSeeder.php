@@ -17,7 +17,10 @@ class DatabaseSeeder extends Seeder
             UsuariosSeeder::class,
             MarcaSeeder::class,
             CategoriasSeeder::class,
-            ProductosSeeder::class
+            ProductosSeeder::class,
+            InventarioSeeder::class,
+            ProveedoresSeeder::class,
+            FacturaSeeder::class
         ]);
     }
 
